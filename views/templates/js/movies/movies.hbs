@@ -1,0 +1,155 @@
+(function() {
+  var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
+templates['actionPanel'] = template({"1":function(container,depth0,helpers,partials,data) {
+    return "<div class=\"row\">\r\n    <div class=\"col-md-2\">\r\n        <section class=\"rightActions\">\r\n            <a class='logoutBtn' id='logoutBtn' href='#logout'><span class='glyphicon glyphicon-log-out'></span></a>\r\n            <a class='addBtn' id='addBtn' href='#movieAddForm'><span class='glyphicon glyphicon-plus-sign'></span></a>\r\n            <a class='deleteBtn' id='deleteBtn' href='#delete'><span class='glyphicon glyphicon-trash'></span></a>\r\n        </section>\r\n    </div>\r\n</div>\r\n";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return ((stack1 = helpers["if"].call(depth0,(depth0 != null ? depth0.hasChangeRights : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
+},"useData":true});
+templates['disclaimerSwitch'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<div class=\"col-md-1\">\r\n    <input checked type=\"checkbox\" data-toggle=\"toggle\" data-size=\"small\" id=\"disclaimerSwitch\">\r\n        <span>Disclaimer</span>\r\n</div>";
+},"useData":true});
+templates['imageFallback'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<form method=\"POST\" enctype=\"multipart/form-data\" action=\"/admin/image\" id=\"fallbackImageForm\" target=\"fallbackFrame\" >\r\n    <input type=\"file\" name=\"image\" id=\"imageInput\">\r\n</form>";
+},"useData":true});
+templates['loginSection'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<section class=\"takeRights\">\r\n    <a target=\"_self\" href=\"/admin/login\">Se connecter</ad>\r\n</section>";
+},"useData":true});
+templates['movieAdd'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper;
+
+  return "<form class=\"form-horizontal addForm\" id='movieAddForm'>\r\n<fieldset>\r\n\r\n<div class=\"form-group\">\r\n  <label class=\"col-md-6 control-label\" for=\"title\">Titre</label>  \r\n  <div class=\"col-md-6\">\r\n  <input id=\"titleInput\" name=\"title\" placeholder=\"\" class=\"form-control input-md\" type=\"text\" title=\"titre\">\r\n  </div>\r\n</div>\r\n\r\n<div class=\"form-group\">\r\n  <label class=\"col-md-6 control-label\" for=\"author\">Réalisateur</label>  \r\n  <div class=\"col-md-6\">\r\n  <input id=\"authorInput\" name=\"author\" placeholder=\"\" class=\"form-control input-md\" type=\"text\" title=\"réalisateur\">\r\n  </div>\r\n</div>\r\n\r\n<div class=\"form-group\">\r\n  <label class=\"col-md-6 control-label\" for=\"year\">Année</label>\r\n  <div class=\"col-md-6\">\r\n    <input type=\"number\" id=\"yearInput\" class=\"form-control\" value=\""
+    + container.escapeExpression(((helper = (helper = helpers.currentYear || (depth0 != null ? depth0.currentYear : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"currentYear","hash":{},"data":data}) : helper)))
+    + "\">\r\n  </div>\r\n</div>\r\n\r\n<div class=\"form-group\">\r\n  <label class=\"col-md-6 control-label\" for=\"content\">Contenu</label>  \r\n  <div class=\"col-md-6\">\r\n  <input id=\"contentInput\" name=\"content\" placeholder=\"\" class=\"form-control input-md\" type=\"text\"  title=\"Lien vers la vidéo\">\r\n  </div>\r\n</div>\r\n\r\n<div class=\"form-group\">\r\n  <label class=\"col-md-6 control-label\" for=\"description\">Description</label>\r\n  <div class=\"col-md-6\">                     \r\n    <textarea class=\"form-control\" id=\"descriptionText\" name=\"description\"></textarea>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"form-group\">\r\n  <label class=\"col-md-6 control-label\" for=\"image\">Image</label>  \r\n  <div class=\"col-md-6\">\r\n  <span class=\"file-input btn btn-block btn-primary btn-file\">\r\n    Choix de fichier...\r\n    <input id=\"imageInput\" name=\"image\" type=\"file\">\r\n  </span>\r\n  </div>\r\n</div>\r\n\r\n</fieldset>\r\n\r\n<div class=\"form-group\">\r\n    <img id=\"movieImg\" class=\"movieImg\" src=\"\" title=\"Image du film\" />\r\n</div>\r\n\r\n<div class=\"form-group\">\r\n  <label class=\"col-md-6 control-label\" for=\"addMovieBtn\"></label>\r\n  <div class=\"col-md-12 text-center\">\r\n    <button id=\"addMovieBtn\" name=\"addMovieBtn\" class=\"btn btn-primary\" type=\"button\">Ajouter</button>\r\n  </div>\r\n</div>\r\n</form>\r\n<!--[if lte IE 9]>\r\n<iframe id=\"imageFallbackFrame\" name=\"fallbackFrame\" style=\"display:none\"></iframe>\r\n<![endif]-->\r\n";
+},"useData":true});
+templates['movieBox'] = template({"1":function(container,depth0,helpers,partials,data) {
+    return " col-md-offset-2";
+},"3":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=helpers.helperMissing, alias2="function", alias3=container.escapeExpression;
+
+  return "    <section class='editActions'>\r\n        <a class='editBtn' id='editBtn"
+    + alias3(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"id","hash":{},"data":data}) : helper)))
+    + "' href='#edit'><span class='glyphicon glyphicon-pencil'></span></a>\r\n        <input class='deleteCheck' id='deleteCheck"
+    + alias3(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"id","hash":{},"data":data}) : helper)))
+    + "' type='checkbox' name='deletes[]'>\r\n    </section>\r\n";
+},"5":function(container,depth0,helpers,partials,data) {
+    var helper;
+
+  return "?"
+    + container.escapeExpression(((helper = (helper = helpers.timestamp || (depth0 != null ? depth0.timestamp : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"timestamp","hash":{},"data":data}) : helper)));
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=helpers.helperMissing, alias2="function", alias3=container.escapeExpression;
+
+  return "<div class='col-md-2 "
+    + ((stack1 = (helpers.moduloIf || (depth0 && depth0.moduloIf) || alias1).call(depth0,(data && data.index),4,{"name":"moduloIf","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + " movie'>\r\n    <div class='title'>"
+    + alias3(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"title","hash":{},"data":data}) : helper)))
+    + "</div>\r\n    <input type='hidden' class='movieId' value='"
+    + alias3(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"id","hash":{},"data":data}) : helper)))
+    + "'>\r\n"
+    + ((stack1 = helpers["if"].call(depth0,(depth0 != null ? depth0.hasChangeRights : depth0),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "    <a href='#details'>\r\n        <image src='"
+    + alias3(((helper = (helper = helpers.image || (depth0 != null ? depth0.image : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"image","hash":{},"data":data}) : helper)))
+    + ((stack1 = helpers["if"].call(depth0,(helpers.eq || (depth0 && depth0.eq) || alias1).call(depth0,(depth0 != null ? depth0.mode : depth0),"edit",{"name":"eq","hash":{},"data":data}),{"name":"if","hash":{},"fn":container.program(5, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "' />\r\n    </a>\r\n</div>";
+},"useData":true});
+templates['movieBoxInRow'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "<div class='row'>\r\n"
+    + ((stack1 = container.invokePartial(partials.movieBox,depth0,{"name":"movieBox","data":data,"helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
+    + "</div>";
+},"usePartial":true,"useData":true});
+templates['movieDetails'] = template({"1":function(container,depth0,helpers,partials,data) {
+    var helper;
+
+  return "?"
+    + container.escapeExpression(((helper = (helper = helpers.timestamp || (depth0 != null ? depth0.timestamp : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"timestamp","hash":{},"data":data}) : helper)));
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=helpers.helperMissing, alias2="function", alias3=container.escapeExpression;
+
+  return "<style type=\"text/css\">\r\n    .jBox-Modal { background-color: #A1B2BD; border: 1px solid rgb(50,86,108); }\r\n    .jBox-container { min-height: inherit; }\r\n</style>\r\n<header>\r\n    <img src=\""
+    + alias3(((helper = (helper = helpers.image || (depth0 != null ? depth0.image : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"image","hash":{},"data":data}) : helper)))
+    + ((stack1 = helpers["if"].call(depth0,(helpers.eq || (depth0 && depth0.eq) || alias1).call(depth0,(depth0 != null ? depth0.mode : depth0),"edit",{"name":"eq","hash":{},"data":data}),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "\" class=\"movieImg center-block\"/>\r\n    <p class=\"info text-center\">\r\n        <span class=\"author\">"
+    + alias3(((helper = (helper = helpers.author || (depth0 != null ? depth0.author : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"author","hash":{},"data":data}) : helper)))
+    + " - </span>\r\n        <span class=\"year\">"
+    + alias3(((helper = (helper = helpers.year || (depth0 != null ? depth0.year : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"year","hash":{},"data":data}) : helper)))
+    + "</span>\r\n    </p>\r\n</header>\r\n<p class=\"movieDesc text-center\">"
+    + alias3(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"description","hash":{},"data":data}) : helper)))
+    + "</p>\r\n<iframe src=\""
+    + alias3(((helper = (helper = helpers.content || (depth0 != null ? depth0.content : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"content","hash":{},"data":data}) : helper)))
+    + "\" class=\"moviePreview\" frameborder=\"0\" width=\"600\" height=\"400\" allowfullscreen>\r\n</iframe>";
+},"useData":true});
+templates['movieEdit'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=helpers.helperMissing, alias2="function", alias3=container.escapeExpression;
+
+  return "<form class=\"form-horizontal editForm\" id='movieEditForm'>\r\n<fieldset>\r\n\r\n<div class=\"form-group\">\r\n  <label class=\"col-md-6 control-label\" for=\"title\">Titre</label>  \r\n  <div class=\"col-md-6\">\r\n  <input id=\"titleInput\" name=\"title\" placeholder=\"\" class=\"form-control input-md\" type=\"text\" title=\"titre\" value=\""
+    + alias3(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"title","hash":{},"data":data}) : helper)))
+    + "\">\r\n  </div>\r\n</div>\r\n\r\n<div class=\"form-group\">\r\n  <label class=\"col-md-6 control-label\" for=\"author\">Réalisateur</label>  \r\n  <div class=\"col-md-6\">\r\n  <input id=\"authorInput\" name=\"author\" placeholder=\"\" class=\"form-control input-md\" type=\"text\" title=\"réalisateur\" value=\""
+    + alias3(((helper = (helper = helpers.author || (depth0 != null ? depth0.author : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"author","hash":{},"data":data}) : helper)))
+    + "\">\r\n  </div>\r\n</div>\r\n\r\n<div class=\"form-group\">\r\n  <label class=\"col-md-6 control-label\" for=\"year\">Année</label>\r\n  <div class=\"col-md-6\">\r\n    <input type=\"number\" id=\"yearInput\" class=\"form-control\" value=\""
+    + alias3(((helper = (helper = helpers.year || (depth0 != null ? depth0.year : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"year","hash":{},"data":data}) : helper)))
+    + "\">\r\n  </div>\r\n</div>\r\n\r\n<div class=\"form-group\">\r\n  <label class=\"col-md-6 control-label\" for=\"content\">Contenu</label>  \r\n  <div class=\"col-md-6\">\r\n  <input id=\"contentInput\" name=\"content\" placeholder=\"\" class=\"form-control input-md\" type=\"text\"  title=\"Lien vers la vidéo\" value=\""
+    + alias3(((helper = (helper = helpers.content || (depth0 != null ? depth0.content : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"content","hash":{},"data":data}) : helper)))
+    + "\">\r\n  </div>\r\n</div>\r\n\r\n<div class=\"form-group\">\r\n  <label class=\"col-md-6 control-label\" for=\"description\">Description</label>\r\n  <div class=\"col-md-6\">                     \r\n    <textarea class=\"form-control\" id=\"descriptionText\" name=\"description\">"
+    + alias3(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"description","hash":{},"data":data}) : helper)))
+    + "</textarea>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"form-group\">\r\n  <label class=\"col-md-6 control-label\" for=\"image\">Image</label>  \r\n  <div class=\"col-md-6\">\r\n  <span class=\"file-input btn btn-block btn-primary btn-file\">\r\n    Choix de fichier...\r\n    <input id=\"imageInput\" name=\"image\" type=\"file\" value=\""
+    + alias3((helpers.fileName || (depth0 && depth0.fileName) || alias1).call(depth0,(depth0 != null ? depth0.image : depth0),{"name":"fileName","hash":{},"data":data}))
+    + "\">\r\n  </span>\r\n  </div>\r\n</div>\r\n\r\n</fieldset>\r\n\r\n<div class=\"form-group\">\r\n    <img id=\"movieImg\" class=\"movieImg\" src=\""
+    + alias3(((helper = (helper = helpers.image || (depth0 != null ? depth0.image : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"image","hash":{},"data":data}) : helper)))
+    + alias3((helpers.concat || (depth0 && depth0.concat) || alias1).call(depth0,"?",(helpers.timestamp || (depth0 && depth0.timestamp) || alias1).call(depth0,{"name":"timestamp","hash":{},"data":data}),{"name":"concat","hash":{},"data":data}))
+    + "\" title=\"Image du film\" />\r\n</div>\r\n\r\n<div class=\"form-group\">\r\n  <label class=\"col-md-6 control-label\" for=\"editMovieBtn\"></label>\r\n  <div class=\"col-md-12 text-center\">\r\n    <button id=\"editMovieBtn\" name=\"editMovieBtn\" class=\"btn btn-primary\" type=\"button\">Sauvegarder</button>\r\n  </div>\r\n</div>\r\n</form>\r\n<!--[if lte IE 9]>\r\n<iframe id=\"imageFallbackFrame\" name=\"fallbackFrame\" style=\"display:none\"></iframe>\r\n<![endif]-->";
+},"useData":true});
+templates['moviesList'] = template({"1":function(container,depth0,helpers,partials,data,blockParams,depths) {
+    var stack1, alias1=helpers.helperMissing;
+
+  return ((stack1 = (helpers.moduloIf || (depth0 && depth0.moduloIf) || alias1).call(depth0,(data && data.index),4,{"name":"moduloIf","hash":{},"fn":container.program(2, data, 0, blockParams, depths),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = container.invokePartial(partials.movieBox,depth0,{"name":"movieBox","hash":{"mode":(depth0 != null ? depth0.mode : depth0),"hasChangeRights":(depths[1] != null ? depths[1].hasChangeRights : depths[1])},"data":data,"indent":"    ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
+    + ((stack1 = (helpers.moduloIf || (depth0 && depth0.moduloIf) || alias1).call(depth0,(helpers.add || (depth0 && depth0.add) || alias1).call(depth0,1,(data && data.index),{"name":"add","hash":{},"data":data}),4,{"name":"moduloIf","hash":{},"fn":container.program(4, data, 0, blockParams, depths),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "    \r\n";
+},"2":function(container,depth0,helpers,partials,data) {
+    return "        <div class='row'>\r\n";
+},"4":function(container,depth0,helpers,partials,data) {
+    return "        </div>\r\n";
+},"6":function(container,depth0,helpers,partials,data) {
+    return "    </div>\r\n";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data,blockParams,depths) {
+    var stack1, helper, options, alias1=helpers.helperMissing, buffer = "";
+
+  stack1 = ((helper = (helper = helpers.movies || (depth0 != null ? depth0.movies : depth0)) != null ? helper : alias1),(options={"name":"movies","hash":{},"fn":container.program(1, data, 0, blockParams, depths),"inverse":container.noop,"data":data}),(typeof helper === "function" ? helper.call(depth0,options) : helper));
+  if (!helpers.movies) { stack1 = helpers.blockHelperMissing.call(depth0,stack1,options)}
+  if (stack1 != null) { buffer += stack1; }
+  return buffer + ((stack1 = (helpers.moduloNotIf || (depth0 && depth0.moduloNotIf) || alias1).call(depth0,(helpers.arrayCnt || (depth0 && depth0.arrayCnt) || alias1).call(depth0,(depth0 != null ? depth0.movies : depth0),{"name":"arrayCnt","hash":{},"data":data}),4,{"name":"moduloNotIf","hash":{},"fn":container.program(6, data, 0, blockParams, depths),"inverse":container.noop,"data":data})) != null ? stack1 : "");
+},"usePartial":true,"useData":true,"useDepths":true});
+templates['moviesListFirstLetterOther'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<form id='firstLetterForm' action=''>\r\n    <input type='text' maxLength='1' size='1' id='firstLetterInput'>\r\n    <button type='button' id='firstLetterBtn'>Ok</button>\r\n</form>";
+},"useData":true});
+templates['moviesListNav'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<div class='container-fluid main-panel'>\r\n    <div class='row' id='row-nav1'>\r\n        <div class='col-md-2'>\r\n            <nav>\r\n                <a href='#a' id='firstLetterA' class='firstLetter'>A</a> |\r\n                <a href='#b' id='firstLetterB' class='firstLetter'>B</a> |\r\n                <a href='#c' id='firstLetterC' class='firstLetter'>C</a> |\r\n                <a href='#d' id='firstLetterD' class='firstLetter'>D</a> |\r\n                <a href='#e' id='firstLetterE' class='firstLetter'>E</a> |\r\n                <a href='#f' id='firstLetterF' class='firstLetter'>F</a> |\r\n                <a href='#g' id='firstLetterG' class='firstLetter'>G</a> |\r\n                <a href='#h' id='firstLetterH' class='firstLetter'>H</a> |\r\n                <a href='#i' id='firstLetterI' class='firstLetter'>I</a> |\r\n                <a href='#j' id='firstLetterJ' class='firstLetter'>J</a> |\r\n                <a href='#k' id='firstLetterL' class='firstLetter'>K</a> |\r\n                <a href='#other' id='firstLetterOther'>..</a>\r\n            </nav>\r\n        </div>\r\n    </div>\r\n</div>";
+},"useData":true});
+templates['pagination'] = template({"1":function(container,depth0,helpers,partials,data,blockParams,depths) {
+    var alias1=container.lambda, alias2=container.escapeExpression;
+
+  return "                    <li><a href=\"#"
+    + alias2(alias1((depths[1] != null ? depths[1].firstLetter : depths[1]), depth0))
+    + "bloc"
+    + alias2(alias1(depth0, depth0))
+    + "\">"
+    + alias2(alias1(depth0, depth0))
+    + "</a></li>\r\n";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data,blockParams,depths) {
+    var stack1, helper, options, alias1=helpers.helperMissing, alias2="function", buffer = 
+  "<nav class=\"pagination\">\r\n    <div class=\"container-fluid\">\r\n        <div class=\"row\">\r\n            <div class=\"col-md-1 col-md-offset-2\">\r\n                <input type=\"text\" value=\""
+    + container.escapeExpression(((helper = (helper = helpers.nbElementsMax || (depth0 != null ? depth0.nbElementsMax : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"nbElementsMax","hash":{},"data":data}) : helper)))
+    + "\" id=\"nbElementsMax\" class=\"nbMax form-control input-sm\">\r\n            </div>\r\n            <div class=\"col-md-3\">\r\n            <ul class=\"pagination pagination-sm\">\r\n";
+  stack1 = ((helper = (helper = helpers.pages || (depth0 != null ? depth0.pages : depth0)) != null ? helper : alias1),(options={"name":"pages","hash":{},"fn":container.program(1, data, 0, blockParams, depths),"inverse":container.noop,"data":data}),(typeof helper === alias2 ? helper.call(depth0,options) : helper));
+  if (!helpers.pages) { stack1 = helpers.blockHelperMissing.call(depth0,stack1,options)}
+  if (stack1 != null) { buffer += stack1; }
+  return buffer + "            </ul>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</nav>";
+},"useData":true,"useDepths":true});
+templates['searchBar'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<div class=\"col-md-1\">\r\n    <input id='searchInput' class='search form-control search-query input-sm' type='text' maxLength='50' size='12'>\r\n</div>";
+},"useData":true});
+})();

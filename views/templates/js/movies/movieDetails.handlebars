@@ -1,0 +1,14 @@
+<style type="text/css">
+    .jBox-Modal { background-color: #A1B2BD; border: 1px solid rgb(50,86,108); }
+    .jBox-container { min-height: inherit; }
+</style>
+<header>
+    <img src="{{image}}{{#if (eq mode 'edit')}}?{{timestamp}}{{/if}}" class="movieImg center-block"/>
+    <p class="info text-center">
+        <span class="author">{{author}} - </span>
+        <span class="year">{{year}}</span>
+    </p>
+</header>
+<p class="movieDesc text-center">{{description}}</p>
+<iframe src="{{content}}" class="moviePreview" frameborder="0" width="600" height="400" allowfullscreen>
+</iframe>

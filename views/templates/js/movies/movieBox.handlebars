@@ -1,0 +1,13 @@
+<div class='col-md-2 {{#moduloIf @index 4}} col-md-offset-2{{/moduloIf}} movie'>
+    <div class='title'>{{title}}</div>
+    <input type='hidden' class='movieId' value='{{id}}'>
+    {{#if hasChangeRights}}
+    <section class='editActions'>
+        <a class='editBtn' id='editBtn{{id}}' href='#edit'><span class='glyphicon glyphicon-pencil'></span></a>
+        <input class='deleteCheck' id='deleteCheck{{id}}' type='checkbox' name='deletes[]'>
+    </section>
+    {{/if}}
+    <a href='#details'>
+        <image src='{{image}}{{#if (eq mode "edit")}}?{{timestamp}}{{/if}}' />
+    </a>
+</div>
