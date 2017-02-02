@@ -1,0 +1,60 @@
+body {
+    background-color: #A1B2BD;
+}
+
+.movie {
+    text-align: center;
+}
+
+.movie:hover {
+    box-shadow: 0px 0px 5px rgba(15,32,25,0.5);
+}
+
+.movie:hover > a > img {
+    border: 2px solid #2579A7;
+}
+
+.movie a {
+    text-decoration: none;
+}
+
+.movie .title > a, nav > a.firstLetter {
+    color: #164F80;
+}
+
+.movie a > img {
+    margin-top: 4px;
+    margin-bottom: 8px;
+    max-height: 317px;
+}
+
+.addBtn > .glyphicon, .logoutBtn > .glyphicon, .deleteBtn > .glyphicon {
+    font-size: 32px;
+    margin-left: 4px;
+}
+
+section[role=navigation] > nav {
+    display: inline-block;
+}
+
+.search {
+    margin-left: 6px;
+    border-radius: 14px;
+}
+
+.footer-panel {
+    margin-top: 4px;
+}
+
+#row-nav1 > div > nav {
+    margin-top: 4px;
+}
+
+.pagination {
+    width: 100%;
+    margin-left: 36px;
+}
+
+#nbElementsMax {
+    margin: 20px 0px;
+}

@@ -1,0 +1,13 @@
+{{#movies}}
+    {{#moduloIf @index 4}}
+        <div class='row'>
+    {{/moduloIf}}
+    {{> movieBox hasChangeRights=../hasChangeRights mode=./mode}}
+    {{#moduloIf (add 1 @index) 4}}
+        </div>
+    {{/moduloIf}}
+    
+{{/movies}}
+{{#moduloNotIf (arrayCnt movies) 4}}
+    </div>
+{{/moduloNotIf}}

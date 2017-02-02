@@ -1,0 +1,19 @@
+<nav class="pagination">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1 col-md-offset-2">
+                <input type="text" value="{{nbElementsMax}}" id="nbElementsMax" class="nbMax form-control input-sm">
+            </div>
+            <div class="col-md-1 col-md-offset-3">
+                <input id="changeNbElementsMax" type="button" value="Ok">
+            </div>
+            <div class="col-md-3">
+            <ul class="pagination pagination-sm">
+                {{#pages}}
+                    <li><a href="#{{../firstLetter}}bloc{{this}}">{{this}}</a></li>
+                {{/pages}}
+            </ul>
+            </div>
+        </div>
+    </div>
+</nav>
