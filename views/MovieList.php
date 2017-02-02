@@ -23,14 +23,14 @@ class MovieList implements IRightAwareView{
     private $_format;
     /** @var boolean $_hasChangeRights */
     private $_hasChangeRights;
-
+    
     /**
      * Initializes an instance
      */
     public function __construct() {
         $this->_hasChangeRights = false;
     }
-
+    
     /**
      * Get the Html content
      * @return string
@@ -49,7 +49,7 @@ class MovieList implements IRightAwareView{
         ob_end_clean();
         return $content;
     }
-
+    
     /**
      * Gets the JSON content
      * @return string
@@ -66,7 +66,7 @@ class MovieList implements IRightAwareView{
         $content = json_encode($data);
         return $content;
     }
-
+    
     /**
      * Set movies
      * @param Generator $movies Generator of \models\Movie
@@ -81,11 +81,11 @@ class MovieList implements IRightAwareView{
     public function setMoviesCnt($moviesCnt) {
         $this->_moviesCnt = $moviesCnt;
     }
-
+    
     public function setMoviesCntCb($callback) {
         $this->_moviesCntCb = $callback;
     }
-
+    
     /**
      * Set components
      * @param IComponent[] $components
@@ -107,7 +107,7 @@ class MovieList implements IRightAwareView{
     public function setChangeRights($hasChangeRights) {
         $this->_hasChangeRights = $hasChangeRights;
     }
-
+    
     /**
      * Render this view
      */
@@ -122,7 +122,7 @@ class MovieList implements IRightAwareView{
                 break;
         }
         Renderer::render($content, $this->_format);
-
-
+        
+        
     }
 }

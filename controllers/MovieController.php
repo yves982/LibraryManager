@@ -29,9 +29,10 @@ class MovieController {
     /** @var \views\MovieSet */
     private $_setView;
 
+    
     /** @var array $_components Array of \views\IComponents */
     private $_components;
-
+    
     /**
      * Set wether user has change rights or not.
      * @param mixed $view Some business view with a setChangeRights method
@@ -40,7 +41,7 @@ class MovieController {
         $hasRights = SessionManager::hasRights();
         $view->setChangeRights($hasRights);
     }
-
+    
     /**
      * Clean a movie's title so that it fits filename rules.
      * @param string $title
@@ -48,7 +49,7 @@ class MovieController {
     private function _cleanTitle($title) {
         return str_replace(array('\'', '\`', '\&', '+', '#', '@', ',', '!', '_', ':'), '', $title);
     }
-
+    
     /**
      * Get fileType, extension, fileName infos out of a new Movie
      * @param Movie $movie
@@ -62,7 +63,7 @@ class MovieController {
         $fileName = implode('', array_map('ucfirst', explode(' ', $title))) .'_'. $movie->year . '.' . $ext;
         return array($fileType, $ext, $fileName);
     }
-
+    
     /**
      * Writes movie image in case it's a dataURL.
      * @param Movie $movie
@@ -73,7 +74,7 @@ class MovieController {
         }
         if(strcasecmp(substr($movie->image, 0, 5), 'data:') == 0) {
             list($fileType, $ext, $fileName) = $this->_getFileInfos($movie);
-
+            
             try {
                 $fileHandle = fopen($this->_getImageFullPath('/resources/images/' . $fileName), 'wb+');
                 $firstComma = strpos($movie->image, ',');
@@ -87,11 +88,11 @@ class MovieController {
             }
         }
     }
-
+    
     private function _getImageFullPath($relativePath) {
         return Config::INSTALL_FOLDER . $relativePath;
     }
-
+    
     /**
      * Rename a movie's image according to its title and year.
      * @param \models\Movie $movie
@@ -110,7 +111,7 @@ class MovieController {
         }
         $movie->image = $newFileBasePath;
     }
-
+    
     /**
      * Render details view.
      * @param string $format mime type accepted by the client
@@ -122,7 +123,7 @@ class MovieController {
         $this->_setChangeRights($this->_movieView);
         $this->_movieView->render();
     }
-
+    
     /**
      * Prepare a movie for edition (grabs required elements when they're not being updated.
      * @param Movie $oldMovie persistant old version of current movie
@@ -130,26 +131,26 @@ class MovieController {
      */
     private function _prepareMovie(Movie $oldMovie, Movie $movie) {
         $needRename = isset($movie->title) || isset($movie->year);
-
+        
         if(!isset($movie->title)){
             $movie->title = $oldMovie->title;
         }
-
+        
         if(!isset($movie->year)) {
             $movie->year = $oldMovie->year;
         }
-
+        
         if(isset($movie->image)) {
             $this->_createImageFromDataURL($movie);
         } else {
             $movie->image = $oldMovie->image;
         }
-
+        
         if($needRename) {
             $this->_renameImage($movie);
         }
     }
-
+    
     /**
      * Initializes an instance
      * @param MovieList $listView Movies list view OPTIONAL used when viewing a list of movies
@@ -165,7 +166,7 @@ class MovieController {
         $this->_setView = $setView;
         $this->_components = $components;
     }
-
+    
     /**
      * Stores a movie
      * @param string $format the accepted mime type
@@ -174,7 +175,7 @@ class MovieController {
     public function add($format, Movie $movie) {
         SessionManager::ensuresAuth();
         try {
-
+            
             $this->_createImageFromDataURL($movie);
 
             $movie->create();
@@ -188,7 +189,7 @@ class MovieController {
             }
         }
     }
-
+    
     /**
      * Select one or more movies
      * @param string $format
@@ -200,7 +201,7 @@ class MovieController {
         $this->_setView->setMovies($movieSet);
         $this->_setView->render();
     }
-
+    
     /**
      * Remove one or more movies from database
      * @param string $format
@@ -212,19 +213,19 @@ class MovieController {
         $movieSet->delete();
         Renderer::renderStatus(Router::HTTP_OK, $format);
     }
-
+    
     public function edit($format, Movie $movie) {
         SessionManager::ensuresAuth();
         $oldMovie = Movie::findById($movie->id);
-
+        
         $this->_prepareMovie($oldMovie, $movie);
-
+        
         $movie->update();
         $updatedMovie = Movie::findById($movie->id);
         unset($movie);
         $this->_renderDetails($format, $updatedMovie);
     }
-
+    
     public function listByFirstLetter($format, $firstLetter) {
         $this->_movies = Movie::findByFirstLetter($firstLetter);
         $this->_listView->setMovies($this->_movies);
@@ -233,11 +234,11 @@ class MovieController {
         $this->_setChangeRights($this->_listView);
         $this->_listView->render();
     }
-
+    
     public function onMoviesRead() {
         $this->_listView->setMoviesCnt($this->_moviesCnt);
     }
-
+    
     public function listBlocByFirstLetter($format, $firstLetter, $maxCnt, $lastLoadedId=NULL) {
         $this->_moviesCnt = 0;
         $this->_movies = Movie::findGroupByFirstLetter($firstLetter, $maxCnt, $this->_moviesCnt, $lastLoadedId);
@@ -248,7 +249,7 @@ class MovieController {
         $this->_setChangeRights($this->_listView);
         $this->_listView->render();
     }
-
+    
     public function getDetails($format, $id) {
         $this->_movie = Movie::findById($id);
         if($this->_movie == NULL) {

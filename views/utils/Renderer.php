@@ -10,7 +10,7 @@ use stdClass;
  * @author yves
  */
 class Renderer {
-
+    
     /**
      * Renders content according to format and set HTTP status code.
      * @param string $content
@@ -31,7 +31,7 @@ class Renderer {
         flush();
         exit();
     }
-
+    
     /**
      * Render HTTP status for the given format
      * @param string $status one of \routes\Router::HTTP_* constants
@@ -40,7 +40,7 @@ class Renderer {
     public static function renderStatus($status, $format) {
         header('HTTP/1.1 '.$status);
         header('Content-Type: ' .$format);
-
+        
         switch($format) {
             case Router::FORMAT_JSON:
                 header('Content-Length: ' .strlen('{}'));
@@ -58,7 +58,7 @@ class Renderer {
         }
         exit();
     }
-
+    
     /**
      * Renders an exception
      * @param Exception $ex
@@ -68,7 +68,7 @@ class Renderer {
     public static function renderEx(Exception $ex, $httpStatus, $format) {
         header('HTTP/1.1 '.$httpStatus);
         header('Content-Type: ' .$format);
-
+        
         switch($format) {
             case Router::FORMAT_JSON:
                 $content = json_encode($ex);
@@ -91,7 +91,7 @@ class Renderer {
                 flush();
                 break;
         }
-
+        
         exit();
     }
 }

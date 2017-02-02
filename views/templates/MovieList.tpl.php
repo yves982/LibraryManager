@@ -13,7 +13,7 @@
             var ctx = {
                 host: '<?php echo Config::BASE_HOST; ?>',
                 data: { movies: [] },
-                hasChangeRights: <?php
+                hasChangeRights: <?php 
                 if($context->hasChangeRights):
                     echo 'true';
                 else :
@@ -21,11 +21,11 @@
                 endif; ?>
             };
         </script>
-
+        
         <section role="navigation">
             <noscript>
             <nav>
-                <?php
+                <?php 
                 $linkBase = '/movies/firstLetter/';
                 if ($context->hasChangeRights):
                     $linkBase = '/admin' . $linkBase;
@@ -40,7 +40,7 @@
                     }
                 ?>
                     <a href="<?php echo $link; ?>" id="<?php echo $id; ?>"><?php echo $content; ?></a> <?php echo $nextJoin; ?>
-                <?php
+                <?php 
                 endfor; ?>
             </nav>
             </noscript>
@@ -52,9 +52,9 @@
                 <a class='addBtn' id='addBtn' href='#movieAddForm'><span class='glyphicon glyphicon-plus-sign'></span></a>
             </section>
             </noscript>
-        <?php
-        endif; ?>
-       <?php
+        <?php 
+        endif; ?> 
+       <?php 
        foreach ($context->components as $comp) :
            echo $comp->render();
        endforeach;
@@ -63,7 +63,7 @@
         <?php foreach($context->moviesBlocs as $i => $movie): ?>
             <script type="text/javascript">
                 ctx.data.movies.push({
-                    <?php
+                    <?php 
                     $movieJson = json_encode($movie);
                     echo substr($movieJson, 1, strlen($movieJson)-2);
                     ?>
@@ -71,7 +71,7 @@
             </script>
             <?php if($i%4 == 0) :?>
             <div class="row">
-            <?php endif; ?>
+            <?php endif; ?>        
             <div class="col-md-3 movie">
                     <div class="title"><a href="/movie/<?php echo $movie->id; ?>"><?php echo $movie->title; ?></a></div>
                     <?php if($context->hasChangeRights) {?>
@@ -87,13 +87,13 @@
             <?php if( (($i+1)%4 == 0) ): ?>
             </div>
             <?php endif; ?>
-        <?php
+        <?php 
         endforeach; ?>
         <?php if(count($context->moviesBlocs) % 4 != 0): ?>
             </div>
         <?php endif; ?>
         </div>
-
+        
         <?php if(!$context->hasChangeRights): ?>
         <noscript>
             <section class="takeRights">
